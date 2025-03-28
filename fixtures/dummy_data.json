@@ -1,0 +1,231 @@
+[
+  {
+    "model": "books.author",
+    "pk": 1,
+    "fields": {
+      "name": "J.K. Rowling",
+      "biography": "British author, best known for the Harry Potter series."
+    }
+  },
+  {
+    "model": "books.author",
+    "pk": 2,
+    "fields": {
+      "name": "George Orwell",
+      "biography": "English novelist and essayist, known for 1984 and Animal Farm."
+    }
+  },
+  {
+    "model": "books.author",
+    "pk": 3,
+    "fields": {
+      "name": "Agatha Christie",
+      "biography": "English writer known for detective novels like Murder on the Orient Express."
+    }
+  },
+  {
+    "model": "books.author",
+    "pk": 4,
+    "fields": {
+      "name": "J.R.R. Tolkien",
+      "biography": "English writer, author of The Lord of the Rings."
+    }
+  },
+  {
+    "model": "books.author",
+    "pk": 5,
+    "fields": {
+      "name": "Jane Austen",
+      "biography": "English novelist known for Pride and Prejudice."
+    }
+  },
+  {
+    "model": "books.author",
+    "pk": 6,
+    "fields": {
+      "name": "Mark Twain",
+      "biography": "American writer, author of The Adventures of Tom Sawyer."
+    }
+  },
+  {
+    "model": "books.author",
+    "pk": 7,
+    "fields": {
+      "name": "Ernest Hemingway",
+      "biography": "American novelist known for The Old Man and the Sea."
+    }
+  },
+  {
+    "model": "books.author",
+    "pk": 8,
+    "fields": {
+      "name": "Leo Tolstoy",
+      "biography": "Russian writer, author of War and Peace."
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 1,
+    "fields": {
+      "title": "Harry Potter and the Philosopher's Stone",
+      "author": 1,
+      "isbn": "9780747532699",
+      "category": "Fantasy",
+      "availability_status": true
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 2,
+    "fields": {
+      "title": "Harry Potter and the Chamber of Secrets",
+      "author": 1,
+      "isbn": "9780747538493",
+      "category": "Fantasy",
+      "availability_status": true
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 3,
+    "fields": {
+      "title": "1984",
+      "author": 2,
+      "isbn": "9780451524935",
+      "category": "Dystopian",
+      "availability_status": false
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 4,
+    "fields": {
+      "title": "Animal Farm",
+      "author": 2,
+      "isbn": "9780451526342",
+      "category": "Political Fiction",
+      "availability_status": true
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 5,
+    "fields": {
+      "title": "Murder on the Orient Express",
+      "author": 3,
+      "isbn": "9780007119318",
+      "category": "Mystery",
+      "availability_status": true
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 6,
+    "fields": {
+      "title": "The Hobbit",
+      "author": 4,
+      "isbn": "9780261102217",
+      "category": "Fantasy",
+      "availability_status": false
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 7,
+    "fields": {
+      "title": "The Lord of the Rings",
+      "author": 4,
+      "isbn": "9780261102385",
+      "category": "Fantasy",
+      "availability_status": true
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 8,
+    "fields": {
+      "title": "Pride and Prejudice",
+      "author": 5,
+      "isbn": "9781503290563",
+      "category": "Romance",
+      "availability_status": true
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 9,
+    "fields": {
+      "title": "Sense and Sensibility",
+      "author": 5,
+      "isbn": "9781503290310",
+      "category": "Romance",
+      "availability_status": false
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 10,
+    "fields": {
+      "title": "The Adventures of Tom Sawyer",
+      "author": 6,
+      "isbn": "9780486400778",
+      "category": "Adventure",
+      "availability_status": true
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 11,
+    "fields": {
+      "title": "The Old Man and the Sea",
+      "author": 7,
+      "isbn": "9780684801223",
+      "category": "Fiction",
+      "availability_status": false
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 12,
+    "fields": {
+      "title": "War and Peace",
+      "author": 8,
+      "isbn": "9781400079988",
+      "category": "Historical Fiction",
+      "availability_status": true
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 13,
+    "fields": {
+      "title": "Anna Karenina",
+      "author": 8,
+      "isbn": "9780143035008",
+      "category": "Romance",
+      "availability_status": true
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 14,
+    "fields": {
+      "title": "Great Expectations",
+      "author": 6,
+      "isbn": "9780141439563",
+      "category": "Classic",
+      "availability_status": false
+    }
+  },
+  {
+    "model": "books.book",
+    "pk": 15,
+    "fields": {
+      "title": "A Farewell to Arms",
+      "author": 7,
+      "isbn": "9780099910107",
+      "category": "Historical Fiction",
+      "availability_status": true
+    }
+  }
+]
