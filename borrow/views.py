@@ -5,6 +5,7 @@ from borrow.serializers import BorrowRecordSerializer, EmptySerializer
 from borrow.models import BorrowRecord
 from rest_framework.decorators import action
 from django.utils import timezone
+from drf_yasg.utils import swagger_auto_schema
 
 
 class BorrowRecordViewSet(viewsets.ModelViewSet):
@@ -32,6 +33,10 @@ class BorrowRecordViewSet(viewsets.ModelViewSet):
         book.availability_status = False
         book.save()
 
+    @swagger_auto_schema(
+        operation_summary='Return a specific BorrowRecord by Member',
+        operation_description='Only authenticated Member can return any books that they borrowed'
+    )
     @action(detail=True, methods=['post'])
     def return_book(self, request, pk=None):
         
@@ -51,3 +56,31 @@ class BorrowRecordViewSet(viewsets.ModelViewSet):
         borrow_record.book.save()
 
         return response.Response({'message': f"{borrow_record.book.title} returned successful."}, status=status.HTTP_200_OK)
+    
+    @swagger_auto_schema(
+        operation_summary='Get a list of BorrowRecords',
+        operation_description='Admin can see all the BorrowRecords but User can see only his/her borrowed records'
+    )
+    def list(self, request, *args, **kwargs):
+        return super().list(request, *args, **kwargs)
+    
+    @swagger_auto_schema(
+        operation_summary='Borrow a Book by Member',
+        operation_description='Any authenticated member can borrow any available books that are not borrowed'
+    )
+    def create(self, request, *args, **kwargs):
+        return super().create(request, *args, **kwargs)
+    
+    @swagger_auto_schema(
+        operation_summary='Retrieve a specific BorrowRecord',
+        operation_description='Any authenticated member can retrieve any specific BorrowRecord'
+    )
+    def retrieve(self, request, *args, **kwargs):
+        return super().retrieve(request, *args, **kwargs)
+    
+    @swagger_auto_schema(
+        operation_summary='Delete a specific BorrowRecord by Admin',
+        operation_description='Only Admin can Delete any specific BorrowRecord'
+    )
+    def destroy(self, request, *args, **kwargs):
+        return super().destroy(request, *args, **kwargs)
