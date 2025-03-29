@@ -93,7 +93,7 @@
       "author": 2,
       "isbn": "9780451524935",
       "category": "Dystopian",
-      "availability_status": false
+      "availability_status": true
     }
   },
   {
@@ -126,7 +126,7 @@
       "author": 4,
       "isbn": "9780261102217",
       "category": "Fantasy",
-      "availability_status": false
+      "availability_status": true
     }
   },
   {
@@ -159,7 +159,7 @@
       "author": 5,
       "isbn": "9781503290310",
       "category": "Romance",
-      "availability_status": false
+      "availability_status": true
     }
   },
   {
@@ -181,7 +181,7 @@
       "author": 7,
       "isbn": "9780684801223",
       "category": "Fiction",
-      "availability_status": false
+      "availability_status": true
     }
   },
   {
@@ -214,7 +214,7 @@
       "author": 6,
       "isbn": "9780141439563",
       "category": "Classic",
-      "availability_status": false
+      "availability_status": true
     }
   },
   {
