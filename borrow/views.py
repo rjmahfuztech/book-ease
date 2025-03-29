@@ -16,7 +16,7 @@ class BorrowRecordViewSet(viewsets.ModelViewSet):
         return BorrowRecordSerializer
     
     def get_permissions(self):
-        if self.action in ['list', 'create', 'destroy']:
+        if self.action in ['destroy']:
             return [IsAdminUser()]
         return [IsAuthenticated()]
 
