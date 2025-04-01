@@ -23,6 +23,8 @@ class BorrowRecordViewSet(viewsets.ModelViewSet):
 
     
     def get_queryset(self):
+        if getattr(self, 'swagger_fake_view', False):
+            return BorrowRecord.objects.none
         if self.request.user.is_staff:
             return BorrowRecord.objects.select_related('book__author', 'member').all()
         return BorrowRecord.objects.select_related('book__author', 'member').filter(member=self.request.user, return_date__isnull=True)
