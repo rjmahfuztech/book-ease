@@ -20,14 +20,13 @@ class SimpleMemberSerializer(serializers.ModelSerializer):
         return obj.get_full_name()
 
 
-class BorrowRecordSerializer(serializers.ModelSerializer):
-    book_id = serializers.IntegerField(write_only=True)
-    book = SimpleBookSerializer(read_only=True)
+class BorrowRecordAddSerializer(serializers.ModelSerializer):
+    book_id = serializers.IntegerField()
     member = serializers.SerializerMethodField(method_name='get_user')
     class Meta:
         model = BorrowRecord
-        fields = ['id', 'book', 'book_id', 'member', 'borrow_date', 'return_date']
-        read_only_fields = ['book', 'member', 'return_date']
+        fields = ['id', 'book_id', 'member', 'borrow_date', 'return_date']
+        read_only_fields = ['member', 'return_date']
 
     def get_user(self, obj):
         return SimpleMemberSerializer(obj.member).data
@@ -41,6 +40,17 @@ class BorrowRecordSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError('Sorry this book is already borrowed')
         
         return value
+    
+class BorrowRecordSerializer(serializers.ModelSerializer):
+    book = SimpleBookSerializer(read_only=True)
+    member = serializers.SerializerMethodField(method_name='get_user')
+    class Meta:
+        model = BorrowRecord
+        fields = ['id', 'book', 'member', 'borrow_date', 'return_date']
+        read_only_fields = ['book', 'member', 'return_date']
+
+    def get_user(self, obj):
+        return SimpleMemberSerializer(obj.member).data
     
 class EmptySerializer(serializers.Serializer):
     pass

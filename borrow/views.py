@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import viewsets, response, status
 from rest_framework.permissions import IsAdminUser, IsAuthenticated
-from borrow.serializers import BorrowRecordSerializer, EmptySerializer
+from borrow.serializers import BorrowRecordSerializer, EmptySerializer, BorrowRecordAddSerializer
 from borrow.models import BorrowRecord
 from rest_framework.decorators import action
 from django.utils import timezone
@@ -14,6 +14,8 @@ class BorrowRecordViewSet(viewsets.ModelViewSet):
     def get_serializer_class(self):
         if self.action == 'return_book':
             return EmptySerializer
+        if self.action == 'create':
+            return BorrowRecordAddSerializer
         return BorrowRecordSerializer
     
     def get_permissions(self):
@@ -36,7 +38,7 @@ class BorrowRecordViewSet(viewsets.ModelViewSet):
         book.save()
 
     @swagger_auto_schema(
-        operation_summary='Return a specific BorrowRecord by Member',
+        operation_summary='Return a specific Borrowed book by Member',
         operation_description='Only authenticated Member can return any books that they borrowed'
     )
     @action(detail=True, methods=['post'])
