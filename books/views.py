@@ -53,7 +53,6 @@ class BookViewSet(viewsets.ModelViewSet):
     http_method_names = ['get', 'post', 'delete', 'put', 'options']
 
     queryset = Book.objects.select_related('author').all()
-    # serializer_class = BookSerializer
     permission_classes = [IsAdminOrReadOnly]
 
     def get_serializer_class(self):
