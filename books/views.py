@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from books.serializers import AuthorSerializer, BookSerializer
+from books.serializers import AuthorSerializer, BookSerializer, BookAddUpdateSerializer
 from rest_framework import viewsets
 from books.models import Author, Book
 from api.permissions import IsAdminOrReadOnly
@@ -53,8 +53,13 @@ class BookViewSet(viewsets.ModelViewSet):
     http_method_names = ['get', 'post', 'delete', 'put', 'options']
 
     queryset = Book.objects.select_related('author').all()
-    serializer_class = BookSerializer
+    # serializer_class = BookSerializer
     permission_classes = [IsAdminOrReadOnly]
+
+    def get_serializer_class(self):
+        if self.request.method in ['POST', 'PUT']:
+            return BookAddUpdateSerializer
+        return BookSerializer
 
     @swagger_auto_schema(
         operation_summary='Get a list of Books',

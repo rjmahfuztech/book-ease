@@ -6,12 +6,11 @@ class AuthorSerializer(serializers.ModelSerializer):
         model = Author
         fields = ['id', 'name', 'biography']
 
-class BookSerializer(serializers.ModelSerializer):
-    author = AuthorSerializer(read_only=True)
-    author_id = serializers.IntegerField(write_only=True)
+class BookAddUpdateSerializer(serializers.ModelSerializer):
+    author_id = serializers.IntegerField()
     class Meta:
         model = Book
-        fields = ['id', 'title', 'author', 'author_id', 'isbn', 'category', 'availability_status']
+        fields = ['id', 'title', 'author_id', 'isbn', 'category', 'availability_status']
         read_only_fields = ['availability_status']
 
     def validate_author_id(self, value):
@@ -33,3 +32,11 @@ class BookSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         author_id = validated_data.pop('author_id')
         return Book.objects.create(author_id=author_id, **validated_data)
+
+
+class BookSerializer(serializers.ModelSerializer):
+    author = AuthorSerializer(read_only=True)
+    class Meta:
+        model = Book
+        fields = ['id', 'title', 'author', 'isbn', 'category', 'availability_status']
+        read_only_fields = ['availability_status']
